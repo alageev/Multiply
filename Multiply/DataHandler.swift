@@ -10,8 +10,8 @@ import SwiftUI
 class DataHandler: ObservableObject {
     
     @Published var answerString: String
+    @AppStorage("numberOfPositiveAnswers") var numberOfPositiveAnswers = 0
     
-    var numberOfPositiveAnswers: Int
     var question: String
     
     private let generator = UINotificationFeedbackGenerator()
@@ -23,12 +23,14 @@ class DataHandler: ObservableObject {
         userAnswer = nil
         lhs = Int.random(in: 0...10)
         rhs = Int.random(in: 0...10)
-        numberOfPositiveAnswers = 0
         question = "\(lhs) ⨉ \(rhs) = ?"
         answerString = " "
     }
     
     func submit() {
+        guard let userAnswer = userAnswer else {
+            return
+        }
         if userAnswer == lhs * rhs {
             numberOfPositiveAnswers += 1
             generator.notificationOccurred(.success)

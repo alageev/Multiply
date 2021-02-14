@@ -12,10 +12,14 @@ struct NumberButton: View {
     @EnvironmentObject var dataHandler: DataHandler
     let number: Int
     
+    init(for number: Int) {
+        self.number = number
+    }
+    
     var body: some View {
         Button(action: input) {
             Text("\(number)")
-                .buttonTextStyle(backgroundColor: .gray)
+                .buttonTextStyle(backgroundColor: Color(.secondarySystemGroupedBackground))
         }
     }
     
@@ -26,7 +30,7 @@ struct NumberButton: View {
 
 struct NumberButton_Previews: PreviewProvider {
     static var previews: some View {
-        NumberButton(number: 0)
+        NumberButton(for: 0)
             .padding()
             .previewLayout(.sizeThatFits)
     }

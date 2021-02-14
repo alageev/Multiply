@@ -13,7 +13,7 @@ struct EraseButton: View {
     
     var body: some View {
         Button(action: dataHandler.erase) {
-            Text("⌫")
+            Image(systemName: "delete.left")
                 .buttonTextStyle(backgroundColor: .red)
         }
     }

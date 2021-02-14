@@ -10,33 +10,22 @@ import SwiftUI
 struct Keyboard: View {
     var body: some View {
         VStack {
-            HStack {
-                NumberButton(number: 1)
-                Spacer()
-                NumberButton(number: 2)
-                Spacer()
-                NumberButton(number: 3)
-            }
-            
-            HStack {
-                NumberButton(number: 4)
-                NumberButton(number: 5)
-                NumberButton(number: 6)
-            }
-            
-            HStack {
-                NumberButton(number: 7)
-                NumberButton(number: 8)
-                NumberButton(number: 9)
+            ForEach(0..<3) { row in
+                HStack {
+                    ForEach(1..<4) { col in
+                        NumberButton(for: 3 * row + col)
+                    }
+                }
             }
             
             HStack {
                 EraseButton()
-                NumberButton(number: 0)
+                NumberButton(for: 0)
                 SubmitButton()
             }
         }
         .padding([.leading, .trailing, .bottom])
+        .background(Color(.systemGroupedBackground))
 //        .ignoresSafeArea()
     }
 }

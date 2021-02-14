@@ -13,7 +13,7 @@ struct SubmitButton: View {
     
     var body: some View {
         Button(action: dataHandler.submit) {
-            Text("⮐")
+            Image(systemName: "return")
                 .buttonTextStyle(backgroundColor: .green)
         }
     }

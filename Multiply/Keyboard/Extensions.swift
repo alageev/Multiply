@@ -7,13 +7,16 @@
 
 import SwiftUI
 
-extension Text {
+extension View {
     func buttonTextStyle(backgroundColor: Color) -> some View {
         self
             .font(.largeTitle)
             .padding()
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(backgroundColor))
+            .background(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .foregroundColor(backgroundColor.opacity(0.9))
+            )
     }
 }
